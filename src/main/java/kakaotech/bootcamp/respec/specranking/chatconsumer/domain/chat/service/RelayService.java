@@ -21,12 +21,13 @@ public class RelayService {
 
     private static final String REDIS_USER_KEY_PREFIX = "chat:user:";
     private static final String CHAT_RELAY_API_PATH = "/api/chat/relay";
+    private static final String SCHEME = "http://";
 
     public void relayOrNotify(User receiver, ChatRelayDto dto) {
         String serverIp = (String) redisTemplate.opsForValue().get(REDIS_USER_KEY_PREFIX + receiver.getId());
         if (serverIp != null && !serverIp.isEmpty()) {
             webClient.post()
-                    .uri(serverIp + CHAT_RELAY_API_PATH)
+                    .uri(SCHEME + serverIp + CHAT_RELAY_API_PATH)
                     .bodyValue(dto)
                     .retrieve()
                     .bodyToMono(String.class)
