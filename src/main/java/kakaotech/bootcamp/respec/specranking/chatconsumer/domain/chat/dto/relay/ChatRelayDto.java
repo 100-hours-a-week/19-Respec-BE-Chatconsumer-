@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 public class ChatRelayDto {
-    private final String senderId;
-    private final String receiverId;
+    private final Long senderId;
+    private final Long receiverId;
     private final String content;
 
-    public ChatRelayDto(String senderId, String receiverId, String content) {
+    public ChatRelayDto(Long senderId, Long receiverId, String content) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.content = content;
