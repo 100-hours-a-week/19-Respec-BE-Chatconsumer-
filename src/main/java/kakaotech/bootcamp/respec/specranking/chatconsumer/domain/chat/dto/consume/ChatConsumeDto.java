@@ -5,12 +5,12 @@ import lombok.Getter;
 @Getter
 public class ChatConsumeDto {
     private final String idempotentKey;
-    private final String senderId;
-    private final String receiverId;
+    private final Long senderId;
+    private final Long receiverId;
     private final String content;
     private final String status;
 
-    public ChatConsumeDto(String idempotentKey, String senderId, String receiverId, String content, String status) {
+    public ChatConsumeDto(String idempotentKey, Long senderId, Long receiverId, String content, String status) {
         this.idempotentKey = idempotentKey;
         this.senderId = senderId;
         this.receiverId = receiverId;

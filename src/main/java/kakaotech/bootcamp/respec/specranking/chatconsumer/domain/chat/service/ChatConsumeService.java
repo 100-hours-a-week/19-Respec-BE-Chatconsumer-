@@ -85,8 +85,8 @@ public class ChatConsumeService {
         return savedChatroom;
     }
 
-    private User findUser(String idStr) {
-        return userRepository.findById(Long.valueOf(idStr))
-                .orElseThrow(() -> new RuntimeException("User not found: " + idStr));
+    private User findUser(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
     }
 }
