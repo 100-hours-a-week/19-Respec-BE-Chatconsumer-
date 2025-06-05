@@ -3,5 +3,5 @@ package kakaotech.bootcamp.respec.specranking.chatconsumer.domain.chatroom.repos
 import kakaotech.bootcamp.respec.specranking.chatconsumer.domain.chatroom.entity.Chatroom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ChatroomRepository extends JpaRepository<Chatroom, Long> {
+public interface ChatroomRepository extends JpaRepository<Chatroom, Long>, ChatroomRepositoryCustom {
 }
