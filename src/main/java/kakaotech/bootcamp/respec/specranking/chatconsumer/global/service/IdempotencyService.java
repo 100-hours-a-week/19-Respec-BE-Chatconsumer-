@@ -11,7 +11,7 @@ public class IdempotencyService {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
-    public boolean tryAcquire(String key) {
+    public Boolean tryAcquire(String key) {
         return redisTemplate.opsForValue().setIfAbsent(key, "1");
     }
 
