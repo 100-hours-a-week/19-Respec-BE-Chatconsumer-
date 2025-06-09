@@ -33,7 +33,7 @@ public class RelayService {
                     .bodyToMono(String.class)
                     .subscribe();
         } else {
-            notificationRepository.save(new Notification(receiver, CHAT, receiver.getId()));
+            notificationRepository.save(new Notification(receiver, CHAT));
         }
     }
 }
