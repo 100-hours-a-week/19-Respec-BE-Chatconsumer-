@@ -33,6 +33,9 @@ public class RelayService {
                     .bodyToMono(String.class)
                     .subscribe();
         } else {
+            if (notificationRepository.existsByUserIdAndTargetName(receiver.getId(), CHAT)) {
+                return;
+            }
             notificationRepository.save(new Notification(receiver, CHAT));
         }
     }
