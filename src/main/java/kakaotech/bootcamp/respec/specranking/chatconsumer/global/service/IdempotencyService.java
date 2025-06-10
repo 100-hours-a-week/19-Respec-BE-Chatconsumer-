@@ -12,7 +12,8 @@ public class IdempotencyService {
     private final RedisTemplate<String, Object> redisTemplate;
 
     public Boolean setIfAbsent(String key) {
-        return redisTemplate.opsForValue().setIfAbsent(key, "1");
+        final String DUMMY_VALUE = "1";
+        return redisTemplate.opsForValue().setIfAbsent(key, DUMMY_VALUE);
     }
 
     public void setTtl(String key, Duration ttl) {
