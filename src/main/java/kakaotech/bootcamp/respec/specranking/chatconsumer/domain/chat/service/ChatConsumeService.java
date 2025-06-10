@@ -47,7 +47,7 @@ public class ChatConsumeService {
                 throw new IllegalArgumentException("Chat message is not sent");
             }
 
-            if (!idempotencyService.tryAcquire(chatDto.getIdempotentKey())) {
+            if (!idempotencyService.setIfAbsent(chatDto.getIdempotentKey())) {
                 return;
             }
 
