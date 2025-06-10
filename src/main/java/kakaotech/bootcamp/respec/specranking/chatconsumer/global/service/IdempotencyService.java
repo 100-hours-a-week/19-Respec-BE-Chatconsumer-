@@ -11,7 +11,7 @@ public class IdempotencyService {
 
     private final RedisTemplate<String, Object> redisTemplate;
 
-    public Boolean tryAcquire(String key) {
+    public Boolean setIfAbsent(String key) {
         return redisTemplate.opsForValue().setIfAbsent(key, "1");
     }
 
@@ -19,7 +19,4 @@ public class IdempotencyService {
         redisTemplate.expire(key, ttl);
     }
 
-    public void release(String key) {
-        redisTemplate.delete(key);
-    }
 }
