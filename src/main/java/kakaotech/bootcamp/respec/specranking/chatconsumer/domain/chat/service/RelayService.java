@@ -24,8 +24,9 @@ public class RelayService {
     private static final String SCHEME = "http://";
 
     public void relayOrNotify(User receiver, ChatRelayDto dto) {
-        String serverIp = (String) redisTemplate.opsForValue().get(REDIS_USER_KEY_PREFIX + receiver.getId());
-        if (serverIp != null && !serverIp.isEmpty()) {
+        Object serverIpObj = redisTemplate.opsForValue().get(REDIS_USER_KEY_PREFIX + receiver.getId());
+
+        if (serverIpObj instanceof String serverIp && !serverIp.isEmpty()) {
             webClient.post()
                     .uri(SCHEME + serverIp + CHAT_RELAY_API_PATH)
                     .bodyValue(dto)
